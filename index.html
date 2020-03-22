@@ -1,0 +1,27 @@
+ <!DOCTYPE html> 
+ <html> 
+ <body onload="getValue()">
+  <p> 
+  <textarea id="inBox" maxlength="40" rows="10" cols="80" onblur="saveValue()"></textarea>
+   </p> 
+   <p> 
+   <button id="undo" onclick="undo()">Undo</button>
+    <button id="clear" onclick="clearItem()">Clear</button> 
+    </p>
+     <script> function getValue() { document.getElementById('inBox').value = localStorage.getItem("newValue"); } function undo() 
+     { 
+     	if (document.getElementById('inBox').value == localStorage.getItem("newValue")) 
+     		{ 
+     			document.getElementById('inBox').value = localStorage.getItem("preValue");
+     			 }
+     			  else document.getElementById('inBox').value = localStorage.getItem("newValue");
+
+     			   } 
+     			   function clearItem() { 
+     			   	document.getElementById('inBox').value = ""; localStorage.removeItem("preValue"); localStorage.removeItem("newValue"); 
+     			   	} 
+     			   	function saveValue() { 
+     			   		if (localStorage.getItem("preValue") != localStorage.getItem("newValue")) localStorage.setItem("preValue", localStorage.getItem("newValue")); newVal = document.getElementById('inBox').value; localStorage.setItem("newValue", newVal);
+     			   		 } </script> 
+     			   		 </body> 
+     			   		 </html>
